@@ -2,10 +2,10 @@
 
 public partial class App : Application
 {
-    public static MainPage MainPageInstance { get; private set; }
-    public static SettingsPage SettingsPageInstance { get; private set; }
-    public static DataPage DataPageInstance { get; private set; }
-    public static CommunicationsPage CommunicationPageInstance { get; private set; }
+    public static MainPage? MainPageInstance { get; private set; }
+    public static SettingsPage? SettingsPageInstance { get; private set; }
+    public static DataPage? DataPageInstance { get; private set; }
+    public static CommunicationsPage? CommunicationPageInstance { get; private set; }
 
     public App()
     {
@@ -20,6 +20,16 @@ public partial class App : Application
 
     protected override Window CreateWindow(IActivationState? activationState)
     {
-        return new Window(new AppShell());
+        var window = new Window(new AppShell());
+
+        // Handle window closing
+        window.Destroying += (s, e) =>
+        {
+            // Clean up the communication page before closing
+            CommunicationPageInstance?.CleanupOnExit();
+        };
+
+        return window;
+
     }
 }

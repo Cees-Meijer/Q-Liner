@@ -56,7 +56,12 @@ public partial class CommunicationsPage : ContentPage
         }
 
         // Get the selected baud rate
-        string baudRateString = baudRatePicker.SelectedItem.ToString();
+        string? baudRateString = baudRatePicker.SelectedItem.ToString();
+        if (string.IsNullOrEmpty(baudRateString) || !int.TryParse(baudRateString, out _))
+        {
+            AppendLog("Error: Invalid baud rate selected");
+            return;
+        }
         int baudRate = int.Parse(baudRateString);
 
         AppendLog($"Opening port: {_selectedSerialPort} at {baudRate} baud");
@@ -116,10 +121,16 @@ public partial class CommunicationsPage : ContentPage
             AppendLog($"Error closing port: {ex.Message}");
         }
 
-        openButton.IsEnabled = true;
-        closeButton.IsEnabled = false;
-        refreshButton.IsEnabled = true;
-        serialPortPicker.IsEnabled = true;
+        // Re-enable all controls
+        Dispatcher.Dispatch(() =>
+        {
+            openButton.IsEnabled = true;
+            closeButton.IsEnabled = false;
+            refreshButton.IsEnabled = true;
+            serialPortPicker.IsEnabled = true;
+            baudRatePicker.IsEnabled = true;
+            baudRatePicker.Opacity = 1.0; // Ensure it's fully visible
+        });
     }
 
     private void StartReadingData()
@@ -250,6 +261,48 @@ public partial class CommunicationsPage : ContentPage
             }
         });
     }
+    public void CleanupOnExit()
+    {
+        try
+        {
+            // Stop reading data first
+            StopReadingData();
 
-    
+            // Give the task a moment to stop
+            Thread.Sleep(100);
+
+            // Close and dispose serial port
+            if (_serialPort != null)
+            {
+                try
+                {
+                    if (_serialPort.IsOpen)
+                    {
+                        _serialPort.Close();
+                    }
+                }
+                catch
+                {
+                    // Ignore exceptions during cleanup
+                }
+
+                try
+                {
+                    _serialPort.Dispose();
+                }
+                catch
+                {
+                    // Ignore exceptions during cleanup
+                }
+
+                _serialPort = null;
+            }
+        }
+        catch
+        {
+            // Ignore any exceptions during cleanup
+        }
+    }
+
+
 }

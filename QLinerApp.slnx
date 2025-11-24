@@ -1,5 +1,5 @@
 <Solution>
-  <Project Path="MauiApp1/QLinerApp.csproj">
+  <Project Path="QlinerApp/QLinerApp.csproj">
     <Deploy />
   </Project>
 </Solution>
