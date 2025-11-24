@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.MainPage"
+             Title="Line Chart">
+    <ScrollView>
+    <Grid Padding="10" RowSpacing="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Button Block -->
+        <Border Grid.Row="0" 
+                Stroke="LightGray" 
+                StrokeShape="RoundRectangle 10" 
+                Padding="10">
+            <Grid RowSpacing="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0"
+                       Text="Serial Port:"
+                       FontSize="14"
+                       FontAttributes="Bold"/>
+
+                <FlexLayout Grid.Row="1"
+                            x:Name="buttonLayout" 
+                            JustifyContent="Start"
+                            Padding="0,0"
+                            Wrap="Wrap">
+                    
+
+                    <HorizontalStackLayout Spacing="5" Margin="0" HeightRequest="70">
+                        <Button x:Name="startButton"
+                                Text="Start" 
+                                Clicked="OnStartClicked"
+                                Padding="20,10"
+                                BackgroundColor="#2196F3"
+                                TextColor="White"
+                                CornerRadius="5"
+                                HeightRequest="40"
+                                Margin="5,0"
+                                FlexLayout.AlignSelf="Auto"
+                                FlexLayout.Grow="0"
+                                FlexLayout.Shrink="0"/>
+
+                        <Button x:Name="stopButton" 
+                                Text="Stop" 
+                                Clicked="OnStopClicked"
+                                Padding="20,10"
+                                BackgroundColor="#F44336"
+                                TextColor="White"
+                                CornerRadius="5"
+                                HeightRequest="40"
+                                FlexLayout.AlignSelf="Auto"
+                                FlexLayout.Grow="0"
+                                FlexLayout.Shrink="0"/>
+                    </HorizontalStackLayout>
+                </FlexLayout>
+            </Grid>
+        </Border>
+
+        <!-- Chart Block -->
+        <Border Grid.Row="1"
+                Stroke="LightGray" 
+                StrokeShape="RoundRectangle 10" 
+                Padding="10">
+            <Grid RowSpacing="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0"
+                       Text="X/Y Line Chart - 20 Random Points"
+                       FontSize="18"
+                       FontAttributes="Bold"
+                       HorizontalTextAlignment="Center"/>
+
+                <GraphicsView Grid.Row="1"
+                              x:Name="chartGraphicsView" 
+                              Drawable="{Binding ChartDrawable}"
+                              HeightRequest="350"/>
+            </Grid>
+        </Border>
+    </Grid>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.CommunicationsPage"
+             Title="Communication">
+
+    <Grid Padding="10" RowSpacing="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Serial Port Block -->
+        <Border Grid.Row="0" 
+                Stroke="LightGray" 
+                StrokeShape="RoundRectangle 10" 
+                Padding="10">
+            <Grid RowSpacing="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0"
+                       Text="Serial Port Configuration:"
+                       FontSize="14"
+                       FontAttributes="Bold"/>
+
+                <Grid Grid.Row="1" ColumnSpacing="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Picker Grid.Column="0"
+                            x:Name="serialPortPicker"
+                            ItemsSource="{Binding AvailableSerialPorts}"
+                            SelectedItem="{Binding SelectedSerialPort}"
+                            Title="Select Port"
+                            MinimumWidthRequest="150"
+                            VerticalOptions="Center"/>
+
+                    <Picker Grid.Column="1"
+                            x:Name="baudRatePicker"
+                            Title="Baud Rate"
+                            SelectedIndex="3"
+                            MinimumWidthRequest="120"
+                            VerticalOptions="Center">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>300</x:String>
+                                <x:String>1200</x:String>
+                                <x:String>2400</x:String>
+                                <x:String>4800</x:String>
+                                <x:String>9600</x:String>
+                                <x:String>19200</x:String>
+                                <x:String>38400</x:String>
+                                <x:String>57600</x:String>
+                                <x:String>115200</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+
+                    <Button Grid.Column="2"
+                            x:Name="refreshButton"
+                            Text="Refresh"
+                            Clicked="OnRefreshClicked"
+                            Padding="10,10"
+                            BackgroundColor="#4CAF50"
+                            TextColor="White"
+                            CornerRadius="5"
+                            WidthRequest="90"
+                            VerticalOptions="Center"/>
+
+                    <Button Grid.Column="3"
+                            x:Name="openButton"
+                            Text="Open"
+                            Clicked="OnOpenClicked"
+                            Padding="10,10"
+                            BackgroundColor="#2196F3"
+                            TextColor="White"
+                            CornerRadius="5"
+                            WidthRequest="90"
+                            VerticalOptions="Center"/>
+
+                    <Button Grid.Column="4"
+                            x:Name="closeButton"
+                            Text="Close"
+                            Clicked="OnCloseClicked"
+                            Padding="10,10"
+                            BackgroundColor="#F44336"
+                            TextColor="White"
+                            CornerRadius="5"
+                            WidthRequest="90"
+                            VerticalOptions="Center"
+                            IsEnabled="False"/>
+                </Grid>
+            </Grid>
+        </Border>
+
+        <!-- Text Display Block -->
+        <Border Grid.Row="1"
+                Stroke="LightGray" 
+                StrokeShape="RoundRectangle 10" 
+                Padding="10">
+            <Grid RowSpacing="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <HorizontalStackLayout Grid.Row="0" Spacing="10">
+                    <Label Text="Communication Log:"
+                           FontSize="14"
+                           FontAttributes="Bold"
+                           VerticalOptions="Center"/>
+                    <CheckBox x:Name="autoScrollCheckBox"
+                              IsChecked="True"
+                              VerticalOptions="Center"/>
+                    <Label Text="Auto-scroll"
+                           FontSize="12"
+                           VerticalOptions="Center"/>
+                </HorizontalStackLayout>
+
+                <Border Grid.Row="1" 
+                        Stroke="Black" 
+                        StrokeThickness="1"
+                        BackgroundColor="Black">
+                    <ScrollView x:Name="logScrollView" 
+                                VerticalScrollBarVisibility="Always">
+                        <Label x:Name="communicationLogLabel"
+                               Text=""
+                               TextColor="White"
+                               BackgroundColor="Black"
+                               FontFamily="Courier New"
+                               FontSize="12"
+                               Padding="10"
+                               LineBreakMode="WordWrap"
+                               VerticalOptions="Start"/>
+                    </ScrollView>
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+
+</ContentPage>

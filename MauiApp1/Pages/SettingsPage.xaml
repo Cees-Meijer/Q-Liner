@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.SettingsPage"
+             Title="Settings">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+            <FlexLayout  JustifyContent="Start"
+                         Padding="0,0"
+                         Wrap="Wrap">
+                <Border Stroke="LightGray" StrokeShape="RoundRectangle 10" Padding="15">
+                    <Grid RowSpacing="5" ColumnSpacing="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Site name -->
+                        <Label Grid.Row="0" Grid.Column="0" 
+                           Text="Site name:" 
+                           VerticalOptions="Center"/>
+                        <Entry Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"
+                           x:Name="siteNameEntry"
+                           Placeholder="Enter site name"/>
+
+                        <!-- Made by -->
+                        <Label Grid.Row="1" Grid.Column="0" 
+                           Text="Measured by:" 
+                           VerticalOptions="Center"/>
+                        <Entry Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
+                           x:Name="madeByEntry"
+                           Placeholder="Enter name"/>
+
+                        <!-- Position from vertical -->
+                        <Label Grid.Row="2" Grid.Column="0" 
+                           Text="Position first vertical:" 
+                           VerticalOptions="Center"/>
+                        <Entry Grid.Row="2" Grid.Column="1"
+                           x:Name="positionVerticalEntry"
+                           Keyboard="Numeric"
+                           Placeholder="0.00"/>
+                        <Label Grid.Row="2" Grid.Column="2" 
+                           Text="m" 
+                           VerticalOptions="Center"/>
+
+                        <!-- Spacing -->
+                        <Label Grid.Row="3" Grid.Column="0" 
+                           Text="Spacing:" 
+                           VerticalOptions="Center"/>
+                        <Entry Grid.Row="3" Grid.Column="1"
+                           x:Name="spacingEntry"
+                           Keyboard="Numeric"
+                           Placeholder="1.00"/>
+                        <Label Grid.Row="3" Grid.Column="2" 
+                           Text="m" 
+                           VerticalOptions="Center"/>
+
+                        <!-- Line heading -->
+                        <Label Grid.Row="4" Grid.Column="0" 
+                           Text="Line heading:" 
+                           VerticalOptions="Center"/>
+                        <Entry Grid.Row="4" Grid.Column="1"
+                           x:Name="lineHeadingEntry"
+                           Keyboard="Numeric"
+                           Placeholder="0"/>
+                        <Label Grid.Row="4" Grid.Column="2" 
+                           Text="Degrees" 
+                           VerticalOptions="Center"
+                           FontSize="12"/>
+
+                        <!-- Edges Position -->
+                        <Label Grid.Row="5" Grid.Column="0" 
+                           Text="Edges:" 
+                           VerticalOptions="Center"
+                           Margin="0,10,0,0"/>
+                        <Label Grid.Row="5" Grid.Column="1" 
+                           Text="Position:" 
+                           VerticalOptions="Center"
+                           Margin="0,10,0,0"
+                           FontSize="12"/>
+                        <Label Grid.Row="5" Grid.Column="2" 
+                           Text="Depth:" 
+                           VerticalOptions="Center"
+                           Margin="0,10,0,0"
+                           FontSize="12"/>
+
+                        <!-- First -->
+                        <Label Grid.Row="6" Grid.Column="0" 
+                           Text="First:" 
+                           VerticalOptions="Center"/>
+                        <HorizontalStackLayout Grid.Row="6" Grid.Column="1" Spacing="5">
+                            <Entry x:Name="firstPositionEntry"
+                               Keyboard="Numeric"
+                               Placeholder="0.00"
+                               WidthRequest="70"/>
+                            <Label Text="m" VerticalOptions="Center"/>
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout Grid.Row="6" Grid.Column="2" Spacing="5">
+                            <Entry 
+                           x:Name="firstDepthEntry"
+                           Keyboard="Numeric"
+                           Placeholder="0.70"
+                           WidthRequest="70"/>
+                            <Label Text="m" VerticalOptions="Center"/>
+                        </HorizontalStackLayout>
+                        <!-- Last  -->
+                        <Label Grid.Row="7" 
+                       Text="Last:" 
+                       VerticalOptions="Center"/>
+                        <HorizontalStackLayout Grid.Row="7" Grid.Column="1" Spacing="5">
+                            <Entry x:Name="lastPositionEntry"
+                           Keyboard="Numeric"
+                           Placeholder="10.00"
+                           WidthRequest="70"/>
+                            <Label Text="m" VerticalOptions="Center"/>
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout Grid.Row="7" Grid.Column="2" Spacing="5">
+                            <Entry 
+                           x:Name="lastDepthEntry"
+                           Keyboard="Numeric"
+                           Placeholder="0.70"
+                           WidthRequest="70"/>
+                            <Label Text="m" VerticalOptions="Center"/>
+                        </HorizontalStackLayout>
+                    </Grid>
+                </Border>
+
+
+                <Border Stroke="LightGray" StrokeShape="RoundRectangle 10" Padding="15">
+                    <Grid RowSpacing="5" ColumnSpacing="10" HeightRequest="400">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Site name -->
+                        <Label Grid.Row="0" Grid.Column="0" 
+               Text="Maximum Depth:" 
+               VerticalOptions="Center"/>
+                        <Entry Grid.Row="0" Grid.Column="1"
+               x:Name="maxDepthEntry"
+               Placeholder="Maximum depth"/>
+                        <Label Grid.Row="0" Grid.Column="2" 
+                        Text="m" 
+                        VerticalOptions="Center"/>
+
+                <!-- Cell -->
+                <Label Grid.Row="1" Grid.Column="0" 
+               Text="Cell Size:" 
+               VerticalOptions="Center"/>
+                 <Entry Grid.Row="1" Grid.Column="1" 
+               x:Name="cellSizeEntry"
+               Placeholder="Cell Size"/>
+               <Label Grid.Row="1" Grid.Column="2" 
+                        Text="m" 
+                        VerticalOptions="Center"/>
+
+                        <!-- Immersion -->
+                    <Label Grid.Row="2" Grid.Column="0" 
+                        Text="Immersion Depth:" 
+                        VerticalOptions="Center"/>
+                    <Entry Grid.Row="2" Grid.Column="1"
+                        x:Name="immersionDepthEntry"
+                        Keyboard="Numeric"
+                        Placeholder="0.00"/>
+                     <Label Grid.Row="2" Grid.Column="2" 
+                        Text="m" 
+                        VerticalOptions="Center"/>
+
+                        <!-- Averaging -->
+                        <Label Grid.Row="3" Grid.Column="0" 
+               Text="Averaging:" 
+               VerticalOptions="Center"/>
+                        <Entry Grid.Row="3" Grid.Column="1"
+               x:Name="averagingEntry"
+               Keyboard="Numeric"
+               Placeholder="1.00"/>
+                        <Label Grid.Row="3" Grid.Column="2" 
+               Text="sec" 
+               VerticalOptions="Center"/>
+
+                        <!-- Blanking -->
+                        <Label Grid.Row="4" Grid.Column="0" 
+               Text="Blanking distance:" 
+               VerticalOptions="Center"/>
+                        <Entry Grid.Row="4" Grid.Column="1"
+               x:Name="blankingDistanceEntry"
+               Keyboard="Numeric"
+               Placeholder="0.2"/>
+                        <Label Grid.Row="4" Grid.Column="2" 
+               Text="m" 
+               VerticalOptions="Center"
+               FontSize="12"/>
+
+
+                    </Grid>
+                </Border>
+            </FlexLayout>
+
+            <!-- Site Information Section -->
+
+            <!-- Tabs Section -->
+            <Border Stroke="LightGray" StrokeShape="RoundRectangle 10" Padding="0" Margin="0,10,0,0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="200"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Tab Headers -->
+                    <Grid Grid.Row="0" ColumnSpacing="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Button Grid.Column="0" 
+                                Text="Site" 
+                                x:Name="siteTabButton"
+                                BackgroundColor="#E0E0E0"
+                                TextColor="Black"
+                                CornerRadius="0"
+                                Clicked="OnSiteTabClicked"/>
+                        <Button Grid.Column="1" 
+                                Text="Profiler" 
+                                x:Name="profilerTabButton"
+                                BackgroundColor="White"
+                                TextColor="Black"
+                                CornerRadius="0"
+                                Clicked="OnProfilerTabClicked"/>
+                        <Button Grid.Column="2" 
+                                Text="Notes" 
+                                x:Name="notesTabButton"
+                                BackgroundColor="White"
+                                TextColor="Black"
+                                CornerRadius="0"
+                                Clicked="OnNotesTabClicked"/>
+                    </Grid>
+
+                    <!-- Tab Content -->
+                    <Border Grid.Row="1" 
+                            Stroke="LightGray" 
+                            StrokeShape="RoundRectangle 10" 
+                            Padding="15">
+                        <Label x:Name="tabContentLabel" 
+                               Text="Site tab content" 
+                               VerticalOptions="Start"/>
+                    </Border>
+                </Grid>
+            </Border>
+
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

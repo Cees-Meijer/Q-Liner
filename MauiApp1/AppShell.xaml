@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:local="clr-namespace:MauiApp1"
+       x:Class="MauiApp1.AppShell">
+
+    <TabBar>
+        <Tab Title="Chart">
+            <ShellContent Content="{x:Static local:App.MainPageInstance}" />
+        </Tab>
+
+        <Tab Title="Settings">
+            <ShellContent Content="{x:Static local:App.SettingsPageInstance}" />
+        </Tab>
+
+        <Tab Title="Data">
+            <ShellContent Content="{x:Static local:App.DataPageInstance}" />
+        </Tab>
+
+        <Tab Title="Communication">
+            <ShellContent Content="{x:Static local:App.CommunicationPageInstance}" />
+        </Tab>
+    </TabBar>
+
+</Shell>
